@@ -9,7 +9,7 @@ module DistribusionClient
     def upload_routes
       uri = URI(DistribusionClient.config.endpoint_url)
       @adapter.routes.each do |route|
-        res = Net::HTTP.post_form(
+        Net::HTTP.post_form(
           uri,
           passphrase: DistribusionClient.config.passphrase,
           source: route.source,
@@ -18,8 +18,6 @@ module DistribusionClient
           start_time: format_time(route.start_time),
           end_time: format_time(route.end_time)
         )
-        p route
-        p res.body
       end
     end
 

@@ -14,6 +14,8 @@ module DistribusionClient
 
         @schedule = []
 
+        download_and_parse_data(uri)
+
         @sequences.each do |sequence|
           route = route_by_id(sequence['route_id'])
           node_time = node_time_by_id(sequence['node_time_id'])
